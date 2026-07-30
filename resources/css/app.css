@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    /*--font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';*/
+
+    /* Betűtípusok */
+    --font-family-body: "Inter", sans-serif;
+    --font-family-mono: "Fira Code", monospace;
+
+    /* Háttérszínek */
+    --color-bg-main: rgba(23, 23, 23, 100%);          /* neutral-900 */
+    --color-bg-card: rgba(38, 38, 38, 100%);          /* neutral-800 */
+    --color-bg-card-light: rgba(64, 64, 64, 100%);    /* neutral-700 */
+
+    /* Szövegszínek */
+    --color-text-primary: rgba(212, 212, 212, 100%);   /* neutral-300 */
+    --color-text-secondary: rgba(163, 163, 163, 100%); /* neutral-400 */
+    --color-text-muted: rgba(115, 115, 115, 100%);     /* neutral-500 */
+    --color-text-dark: rgba(82, 82, 82, 100%);         /* neutral-600 */
+
+    /* Hangsúlyos / Brand (Emerald) színek */
+    --color-accent-base: rgba(16, 185, 129, 100%);     /* emerald-500 */
+    --color-accent-light: rgba(52, 211, 153, 100%);    /* emerald-400 */
+    --color-accent-lighter: rgba(110, 231, 183, 100%);  /* emerald-300 */
+    --color-accent-bright: rgba(167, 243, 208, 100%);   /* emerald-200 */
+
+    /* Határok és elválasztók */
+    --color-border-main: rgba(38, 38, 38, 100%);       /* neutral-800 */
+    --color-border-light: rgba(64, 64, 64, 100%);      /* neutral-700 */
+
+    --color-zinc-50: #fafafa;
+    --color-zinc-100: #f5f5f5;
+    --color-zinc-200: #e5e5e5;
+    --color-zinc-300: #d4d4d4;
+    --color-zinc-400: #a3a3a3;
+    --color-zinc-500: #737373;
+    --color-zinc-600: #525252;
+    --color-zinc-700: #404040;
+    --color-zinc-800: #262626;
+    --color-zinc-900: #171717;
+    --color-zinc-950: #0a0a0a;
+
+    --color-accent: var(--color-neutral-800);
+    --color-accent-content: var(--color-neutral-800);
+    --color-accent-foreground: var(--color-white);
+}
+
+@layer theme {
+    .dark {
+        --color-accent: var(--color-white);
+        --color-accent-content: var(--color-white);
+        --color-accent-foreground: var(--color-neutral-800);
+    }
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply  !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+/* \[:where(&)\]:size-4 {
+    @apply size-4;
+} */

@@ -1,0 +1,1 @@
+<a :href="item.link" class="text-accent-light hover:text-accent-lighter transition-colors" x-text="item.content"></a>
