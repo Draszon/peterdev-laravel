@@ -9,6 +9,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::livewire('technology', 'pages::technology-admin')->name('admin.technology');
     Route::livewire('works', 'pages::works-admin')->name('admin.works');
     Route::livewire('messages', 'pages::messages-admin')->name('admin.messages');
+    Route::livewire('contacts', 'pages::contacts-admin')->name('admin.contacts');
 });
 
 require __DIR__.'/settings.php';

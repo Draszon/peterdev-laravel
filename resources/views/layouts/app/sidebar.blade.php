@@ -27,6 +27,10 @@
                     <flux:sidebar.item :href="route('admin.messages')" :current="request()->routeIs('admin.messages')" wire:navigate>
                         {{ __('Üzenetek') }}
                     </flux:sidebar.item>
+
+                    <flux:sidebar.item :href="route('admin.contacts')" :current="request()->routeIs('admin.contacts')" wire:navigate>
+                        {{ __('Elérhetőségek') }}
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

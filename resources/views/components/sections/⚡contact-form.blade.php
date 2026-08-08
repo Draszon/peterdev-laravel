@@ -3,9 +3,19 @@
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use App\Models\Message;
+use Livewire\Attributes\Computed;
+use App\Models\Contact;
 
 new class extends Component
 {
+    #[Computed]
+    public function pageDatas()
+    {
+        return [
+            'contacts' => Contact::all(),
+        ];
+    }
+
     #[Validate('required', message: 'Írd le hogyan szólíthatlak!')]
     public $name = '';
 
@@ -16,7 +26,7 @@ new class extends Component
     #[Validate('required', message: 'Írd le röviden miben segíthetek!')]
     public $message = '';
 
-    public function save ()
+    public function save()
     {
         $this->validate();
 
@@ -51,11 +61,11 @@ new class extends Component
                 <!-- Közvetlen Email Elérhetőség -->
                 <div class="pt-2">
                     <span class="text-text-muted font-family-mono text-xs block mb-1">Közvetlen elérhetőségem:</span>
-                    <a href="mailto:info@peterdev.hu" class="font-family-mono text-accent-light hover:text-accent-lighter text-sm sm:text-lg font-semibold bg-bg-main/60 border border-border-light/50 px-4 py-2 rounded-lg inline-flex items-center gap-2 transition-colors">
+                    <a href="mailto:{{ $this->pageDatas['contacts'][2]['contact_link'] }}" class="font-family-mono text-accent-light hover:text-accent-lighter text-sm sm:text-lg font-semibold bg-bg-main/60 border border-border-light/50 px-4 py-2 rounded-lg inline-flex items-center gap-2 transition-colors">
                         <svg class="w-4 h-4 text-accent-base" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
-                        info@peterdev.hu
+                        {{ $this->pageDatas['contacts'][2]['contact_link'] }}
                     </a>
                 </div>
             </div>
