@@ -1,11 +1,18 @@
 <footer class="border-t border-border-main py-10 text-center font-family-mono text-[11px] sm:text-xs text-text-dark px-4 space-y-4">
-    <div class="flex justify-center items-center space-x-6 text-text-secondary">
+    <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-6 text-text-secondary">
         @foreach ($socialLinks as $link)
             <a href="{{ $link->formattedUrl }}" target="_blank" rel="noopener noreferrer" class="hover:text-accent-light transition-colors flex items-center gap-1.5">
                 <span>// {{ $link->contact_name }}</span>
             </a>
         @endforeach
     </div>
+
+    <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-6 text-text-secondary">
+        <a href="/adatkezelesi_tajekoztato.pdf" target="_blank" rel="noopener" class="hover:text-accent-light transition-colors">
+            // adatkezelési tájékoztató
+        </a>
+    </div>
+
     <div
         x-data="{
             currentYear: new Date().getFullYear(),

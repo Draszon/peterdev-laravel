@@ -34,6 +34,9 @@ new class extends Component
     #[Validate('max:2000', message: 'Max 2000 karaktert hosszú lehet az üzenet!')]
     public $message = '';
 
+    #[Validate('accepted', message: 'El kell fogadnod az adatkezelési tájékoztatót a küldés előtt.')]
+    public $privacy_consent = false;
+
     public $website = '';
 
     public float $formLoadedAt = 0.0;
@@ -45,10 +48,12 @@ new class extends Component
 
     public function save()
     {
+        $this->validate();
+
         if ($this->website !== '' || (microtime(true) - $this->formLoadedAt) < 2) {
             session()->flash('status', 'Sikeres üzenetküldés!');
 
-            return $this->reset(['name', 'email', 'message', 'website']);
+            return $this->reset(['name', 'email', 'message', 'website', 'privacy_consent']);
         }
 
         $rateLimitKey = 'contact-form:'.request()->ip();
@@ -61,8 +66,6 @@ new class extends Component
             return null;
         }
 
-        $this->validate();
-
         RateLimiter::hit($rateLimitKey, 60);
 
         Message::create(
@@ -71,7 +74,7 @@ new class extends Component
 
         session()->flash('status', 'Sikeres üzenetküldés!');
 
-        return $this->reset(['name', 'email', 'message', 'website']);
+        return $this->reset(['name', 'email', 'message', 'website', 'privacy_consent']);
     }
 };
 ?>
@@ -146,7 +149,19 @@ new class extends Component
                         @enderror
                     </div>                
                 </div>
-                <div class="pt-1 sm:pt-2">
+                <div class="pt-1 sm:pt-2 space-y-3">
+                    <label class="flex items-start gap-3 text-text-secondary text-[11px] sm:text-xs leading-relaxed">
+                        <input wire:model="privacy_consent" type="checkbox" class="mt-1 h-4 w-4 rounded border-border-light bg-bg-main text-accent-base focus:ring-accent-base">
+                        <span>
+                            Elfogadom az <a href="/adatkezelesi_tajekoztato.pdf" target="_blank" rel="noopener" class="text-accent-light hover:text-accent-lighter underline">adatkezelési tájékoztatót</a>, és hozzájárulok ahhoz, hogy az általam megadott adatokat a kapcsolatfelvétel céljából tárolják és feldolgozzák.
+                        </span>
+                    </label>
+                    <div>
+                        @error('privacy_consent')
+                            <span class="text-red-400 text-xs">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                     <button type="submit" class="w-full bg-accent-base hover:bg-accent-light text-neutral-950 font-extrabold p-3.5 sm:p-4 rounded-lg transition-colors text-sm sm:text-base shadow-[0_0_30px_rgba(16,185,129,0.1)]">
                         üzenet_küldése()
                     </button>
