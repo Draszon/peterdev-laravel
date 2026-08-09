@@ -21,8 +21,13 @@
     >
         <div class="w-full flex items-center justify-between">
             <!-- Logo string -->
-            <div class="font-family-mono text-accent-light font-bold tracking-wider text-xs sm:text-sm lg:text-base pr-2">
-                &lt; PETER_DEV /&gt;
+            <div class="flex items-center gap-2 sm:gap-3 font-family-mono pr-2">
+                <div class="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-accent-base/40 bg-accent-base/10 text-accent-light shadow-[0_0_20px_rgba(37,99,235,0.15)]">
+                    <span class="text-[13px] sm:text-sm font-black">&lt;/&gt;</span>
+                </div>
+                <div class="text-xs sm:text-sm lg:text-base font-bold tracking-wider text-accent-light">
+                    PETER_DEV
+                </div>
             </div>
             <!-- Menüpontok Desktop -->
             <div class="hidden md:flex items-center space-x-6 lg:space-x-12 font-family-mono text-xs lg:text-sm">
