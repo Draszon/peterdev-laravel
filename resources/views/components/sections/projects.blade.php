@@ -3,13 +3,13 @@
 <section
     id="projects"
     class="scroll-mt-24 border-b border-border-main py-16 sm:py-24 px-4 md:px-8 lg:px-12 bg-bg-card/10"
-    x-data="{ show: false }"
-    x-intersect.once="show = true"
+    x-data="{ shown: false }"
+    x-intersect.once="shown = true"
 >
     <div class="w-full space-y-12 sm:space-y-16">
         <div
-            :class="show ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'"
             class="space-y-2.5 transform transition-all duration-500 ease-out"
+            :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-12 pointer-events-none'"
         >
             <div class="animate-bounce font-family-mono text-[11px] sm:text-xs text-accent-light">// 04. munkáim</div>
             <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Projektjeim és referenciáim</h2>
@@ -20,7 +20,7 @@
             @foreach ($projects as $index => $project)
                 <div
                     class="bg-bg-card/30 border border-border-light/60 rounded-xl p-6 sm:p-8 flex flex-col justify-between gap-6 hover:border-text-dark transform transition-all duration-500 ease-out group"
-                    :class="show ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+                    :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'"
                     :style="'transition-delay: ' + (200 + ({{ $index }} * 80)) + 'ms;'"
                 >
                     <div class="space-y-3 sm:space-y-4">

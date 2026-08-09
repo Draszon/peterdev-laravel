@@ -7,11 +7,8 @@
         
         <!-- Bal hasáb -->
         <div
-            class="lg:col-span-7 space-y-6 sm:space-y-8 transition-all duration-400"
-            x-show="shown"
-            x-transition:enter="transition ease-out duration-300 delay-300"
-            x-transition:enter-start="opacity-0 -translate-x-50"
-            x-transition:enter-end="opacity-100 translate-x-0"
+            class="lg:col-span-7 space-y-6 sm:space-y-8 transition-all duration-300 delay-300 ease-out"
+            :class="shown ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12 pointer-events-none'"
             x-data="{
                 text: 'A látványos megjelenés mögött stabil technológia és átgondolt struktúra áll.',
                 newText: '',
@@ -38,13 +35,13 @@
             <span class="animate-pulse border-r-7 border-accent-light ml-0.5 text-3xl sm:text-5xl lg:text-6xl">&nbsp;</span>
             
             <p class="text-text-secondary text-sm sm:text-lg lg:text-xl max-w-3xl leading-relaxed">
-                Szia, Péter vagyok — full-stack webfejlesztő & sysadmin <br>
-                Webalkalmazásokat építek az alapoktól a szerveroldali architektúráig. Rendszerüzemeltetői
-                háttérrel nemcsak a tiszta, karbantartható kódra, hanem a mögötte álló
-                infrastruktúrára is kiemelt
-                figyelmet fordítok. Az oldalon a saját projektjeimet és referenciáimat
-                gyűjtöttem össze. Ha felkeltette az érdeklődésedet a munkám, a kapcsolat
-                szekcióban megtalálod az elérhetőségeimet.
+                Szia, Péter vagyok, full-stack webfejlesztő. <br>
+                Egyedi weboldalakat és webalkalmazásokat építek, a felülettől a stabil
+                szerveroldali háttérig. Rendszerüzemeltetői tapasztalattal a tiszta,
+                karbantartható kód mellett a mögötte álló infrastruktúrára is figyelek.
+                Az oldalon a saját projektjeimet és referenciáimat gyűjtöttem össze. Ha
+                kíváncsi vagy, hogyan dolgozom és milyen megoldásokban gondolkodom,
+                nézd meg az eddigi munkáimat vagy keress bizalommal.
             </p>
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 text-xs sm:text-sm">
                 <a href="#contact" class="bg-accent-base hover:bg-accent-light text-neutral-950 font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded shadow-[0_0_30px_rgba(16,185,129,0.15)] transition-all transform hover:-translate-y-0.5 text-center md:w-auto">
@@ -57,11 +54,8 @@
         </div>
         <!-- Jobb hasáb: JSON Terminál -->
         <div
-            class="lg:col-span-5 w-full"
-            x-show="shown"
-            x-transition:enter="transition ease-out duration-400 delay-300"
-            x-transition:enter-start="opacity-0 translate-x-50"
-            x-transition:enter-end="opacity-100 translate-x-0"
+            class="lg:col-span-5 w-full transition-all ease-out duration-400 delay-300"
+            :class="shown ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 pointer-events-none'"
         >
             <div class="bg-bg-card border border-border-light rounded-xl shadow-2xl overflow-hidden">
                 <div class="bg-bg-main px-4 sm:px-6 py-3 sm:py-4 border-b border-border-main flex items-center justify-between font-family-mono text-[10px] sm:text-xs text-text-muted">

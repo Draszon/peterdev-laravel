@@ -11,6 +11,6 @@
             currentYear: new Date().getFullYear(),
         }"
     >
-    <p>&copy; <span x-text="currentYear"></span> &lt; PÉTER_DEV /&gt;. Minden jog fenntartva.</p>
+    <p>&copy; <span x-text="currentYear"></span> &lt; PETER_DEV /&gt;. Minden jog fenntartva.</p>
     </div>
 </footer>
