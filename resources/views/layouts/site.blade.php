@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
     <head>
+        @include('partials.analytics')
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Péter full-stack webfejlesztő, modern Laravel, Livewire és Tailwind alapú weboldalak, portfolio és egyedi digitális megoldások.">
@@ -42,5 +44,7 @@
         <x-sections.footer />
 
         @livewireScripts
+
+        @include('partials.cookie-banner')
     </body>
 </html>
